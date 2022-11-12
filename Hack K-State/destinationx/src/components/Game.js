@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import Clue from './Clue.js';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Game = ({country, newCountry}) => {
   country = {
@@ -59,7 +59,6 @@ const Game = ({country, newCountry}) => {
 
     let clueCount = Object.entries(country.clues).filter(clue => clue[1] != null).length;
     setFinal(clueCount === clues.length + 1);
-    console.log(`${clueCount} / ${clues.length + 1}: ${final}`)
   }
 
   const finalGuess = (e) => {
@@ -88,19 +87,29 @@ const Game = ({country, newCountry}) => {
     <div>
       {gameover ? 
       <div>
-        <h1>Game Over! Final Score: {score}, Misses: {wrong.length}</h1>
-        <Button variant="dark" onClick={newGame} >Start A New Game</Button>
+        <Card className="gameOver">
+          <Card.Body>
+            <Card.Title>Game Over!</Card.Title>
+            <Card.Subtitle>The destination was {country.name}</Card.Subtitle>
+            <Card.Text>
+              Score: {score}<br></br>
+              Misses: {wrong.length}
+            </Card.Text>
+            <Button variant="dark" onClick={newGame} className="newGame">Start A New Game</Button>
+          </Card.Body>
+        </Card>
       </div> :
       <div>
         <h1>Score: {score}</h1>
-        {correct && <h1 key = {country.name}><u>The destination was {country.name}!</u></h1>}
-        {correct && <Button onClick={refresh}>Continue</Button>}
         <Form>
             <Form.Label>
                 <Form.Control type="text" name="guess" placeholder="Destination..." onChange={e => setGuess({ ...guess, guess: e.target.value })} />
             </Form.Label>
             {final ? <Button variant="dark" type="submit" onClick={finalGuess} disabled={correct} >Submit</Button>: <Button variant="dark" type="submit" onClick={handleBtnClick} disabled={correct} >Submit</Button>}
         </Form>
+
+        {correct && <h2 key = {country.name}><u>The destination was {country.name}</u></h2>}
+
         Guesses: {wrong.length > 0 ? (wrong.length > 1 ? wrong.join(", ") : wrong) : "none"}
 
         <Container>
@@ -125,6 +134,8 @@ const Game = ({country, newCountry}) => {
             </Col>
           </Row>
         </Container>
+
+        {correct && <Button onClick={refresh}>Continue</Button>}
 
       </div>
       } 
