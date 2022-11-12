@@ -25,7 +25,7 @@ function App() {
         <Navbar /> 
         {country ?
           <Game  country = {country} newCountry ={newCountry} />
-         : 
+        : 
           <h1>Loading</h1>
         }
     </div>

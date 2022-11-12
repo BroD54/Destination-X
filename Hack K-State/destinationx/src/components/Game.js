@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import Clue from './Clue.js';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Game = ({country, newCountry}) => {
   country = {
@@ -32,9 +32,9 @@ const Game = ({country, newCountry}) => {
   const [correct, setCorrect] = useState(false);
   const [score, setScore] = useState(0);
   let [wrong, setWrong] = useState([]);
-
+  const [gameover, setGameover] = useState(false);
   let [clues, setClues] = useState([]);
-
+  const [final, setFinal] = useState(false);
   const handleBtnClick = e => {
     e.preventDefault();
     if (guess.guess === country.name){
@@ -42,33 +42,67 @@ const Game = ({country, newCountry}) => {
         setScore(score + 1);
     } else{
         setWrong([...wrong, guess.guess]);
+        setGameover(wrong.length + 1  === 5);
     }
     
   };
 
   const clueUse = (type) => {
     setClues([...clues, type])
+
+    let clueCount = Object.entries(country.clues).filter(clue => clue != null).length;
+    setFinal(clueCount === clues.length + 1);
+  }
+
+  const finalGuess = (e) => {
+    e.preventDefault();
+    if (guess.guess === country.name){
+        setCorrect(true);
+        setScore(score + 1);
+    } else{
+        setWrong([...wrong, guess.guess]);
+    }
+    let clueCount = Object.entries(country.clues).filter(clue => clue != null).length;
+    setGameover(clueCount === clues.length);
   }
 
   const refresh = () => {
     newCountry();
     setCorrect(false);
-    //window.location.reload();
+  }
+
+  const newGame = () => {
+    window.location.reload();
   }
 
   return (
     <div>
-        <h1>You have guessed {score} correct</h1>
-        {correct && <h1 key = {country.name}><u>The Country was {country.name}!</u></h1>}
-        {correct && <Button onClick={refresh}>New Game?</Button>}
+      {gameover ? 
+      <div>
+        <h1>Game Over! Final Score: {score}, Misses: {wrong.length}</h1>
+        <Button onClick={newGame} >Start A New Game</Button>
+      </div> :
+      <div>
+        <h1>Score: {score}</h1>
+        {correct && <h1 key = {country.name}><u>The destination was {country.name}!</u></h1>}
+        {correct && <Button onClick={refresh}>Continue</Button>}
         <Form>
             <Form.Label>
                 Guesses: {wrong.length > 0 ? (wrong.length > 1 ? wrong.join(", ") : wrong) : "none"}
-                <Form.Control type="text" name="guess" placeholder="Country/Territory..." onChange={e => setGuess({ ...guess, guess: e.target.value })} />
+                <Form.Control type="text" name="guess" placeholder="Destination..." onChange={e => setGuess({ ...guess, guess: e.target.value })} />
             </Form.Label>
-            <Button type="submit" onClick={handleBtnClick} disabled={correct} >Submit</Button>
+            {final ? <Button type="submit" onClick={finalGuess} disabled={correct} >Submit</Button>: <Button type="submit" onClick={handleBtnClick} disabled={correct} >Submit</Button>}
         </Form>
         
+
+        <Container>
+          <Row>
+            <Col>
+            
+            </Col>
+          </Row>
+        </Container>
+
         <ul>
             {Object.entries(country.clues).map(clue => (
                 clue[1] != null &&
@@ -77,6 +111,8 @@ const Game = ({country, newCountry}) => {
                 </li>
             ))}
         </ul>
+      </div>
+      } 
     </div>
   )
 }
