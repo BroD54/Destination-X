@@ -1,18 +1,18 @@
 import {useState, useEffect} from 'react'
 import React from 'react'
 import {Button} from 'react-bootstrap';
-const Clue = ({reset, setReset, type, ans, clueUse, isDisabled}) => {
+const Clue = ({restart, setRestart, type, ans, clueUse, isDisabled}) => {
   if(ans.length > 1 && Array.isArray(ans)){
     ans = ans.join(", ");
   }
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if(reset){
+    if(restart){
       setShow(false);
     }
-    setReset(false);
-  }, [reset])
+    setRestart(false);
+  }, [restart])
 
   const usedClue = () => {
     setShow(true);

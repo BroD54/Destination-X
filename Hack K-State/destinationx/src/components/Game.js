@@ -17,7 +17,7 @@ const Game = ({country, newCountry}) => {
         "population": country.population,
         "carside": country.car.side,
         "flag": country.flags.png,
-        "independent": country.independent.toString(),
+        "independent": (country.independent == null) ? null : country.independent.toString(),
         "landlocked": country.landlocked.toString(),
         "latlong": (country.capitalInfo.latlng == null) ? null : Object.entries(country.capitalInfo.latlng).map(l => l[1]),
         "gini": (country.gini == null) ? null : Object.entries(country.gini).map(gini => gini[1])[0],
@@ -34,24 +34,26 @@ const Game = ({country, newCountry}) => {
     country.clues.borders = "No borders";
   }
 
-  const [guess, setGuess] = useState();
+  const [guess, setGuess] = useState("");
   const [correct, setCorrect] = useState(false);
   const [score, setScore] = useState(0);
   let [wrong, setWrong] = useState([]);
   const [gameover, setGameover] = useState(false);
   let [clues, setClues] = useState([]);
   const [final, setFinal] = useState(false);
-  const [reset, setReset] = useState(false);
+  const [restart, setRestart] = useState(false);
+
   const handleBtnClick = e => {
     e.preventDefault();
-    if (guess.guess === country.name){
+    if (guess.toLowerCase() === country.name.toLowerCase()){
         setCorrect(true);
         setScore(score + 1);
     } else{
-        setWrong([...wrong, guess.guess]);
+        setWrong([...wrong, guess]);
         setGameover(wrong.length + 1  === 5);
     }
-    
+    setGuess("");
+
   };
 
   const clueUse = (type) => {
@@ -63,11 +65,11 @@ const Game = ({country, newCountry}) => {
 
   const finalGuess = (e) => {
     e.preventDefault();
-    if (guess.guess === country.name){
+    if (guess.toLowerCase() === country.name.toLowerCase()){
         setCorrect(true);
         setScore(score + 1);
     } else{
-        setWrong([...wrong, guess.guess]);
+        setWrong([...wrong, guess]);
     }
     let clueCount = Object.entries(country.clues).filter(clue => clue[1] != null).length;
     setGameover(clueCount === clues.length);
@@ -76,7 +78,7 @@ const Game = ({country, newCountry}) => {
   const refresh = () => {
     newCountry();
     setCorrect(false);
-    setReset(true);
+    setRestart(true);
   }
 
   const newGame = () => {
@@ -103,7 +105,7 @@ const Game = ({country, newCountry}) => {
         <h1>Score: {score}</h1>
         <Form>
             <Form.Label>
-                <Form.Control type="text" name="guess" placeholder="Destination..." onChange={e => setGuess({ ...guess, guess: e.target.value })} />
+                <Form.Control type="text" name="guess" placeholder="Destination..." value={guess} onChange={e => setGuess(e.target.value)} />
             </Form.Label>
             {final ? <Button variant="dark" type="submit" onClick={finalGuess} disabled={correct} >Submit</Button>: <Button variant="dark" type="submit" onClick={handleBtnClick} disabled={correct} >Submit</Button>}
         </Form>
@@ -117,19 +119,19 @@ const Game = ({country, newCountry}) => {
           <Col>
             {Object.entries(country.clues).slice(0, Object.entries(country.clues).length / 3).map(clue=> (
               clue[1] != null &&
-              <Clue key={clue[0]} reset={reset} setReset={setReset} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
+              <Clue key={clue[0]} restart={restart} setRestart={setRestart} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
             ))}
             </Col>
             <Col>
             {Object.entries(country.clues).slice(Object.entries(country.clues).length / 3, Object.entries(country.clues).length / 3 * 2).map(clue=> (
               clue[1] != null &&
-              <Clue key={clue[0]} reset={reset} setReset={setReset} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
+              <Clue key={clue[0]} restart={restart} setRestart={setRestart} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
             ))}
             </Col>
             <Col>
             {Object.entries(country.clues).slice(Object.entries(country.clues).length / 3 * 2, Object.entries(country.clues).length).map(clue=> (
               clue[1] != null &&
-              <Clue key={clue[0]} reset={reset} setReset={setReset} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
+              <Clue key={clue[0]} restart={restart} setRestart={setRestart} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
             ))}
             </Col>
           </Row>
