@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   const [country, setCountry] = useState();
-
+  const[getNew, setGetNew] = useState(false);
   useEffect(() => {
     async function getCountry() {
       let resp = await fetch("https://restcountries.com/v3.1/all");
@@ -14,14 +14,17 @@ function App() {
       setCountry(resp[num]);
     }
     getCountry();
+  }, [getNew])
 
-  }, [])
+  const newCountry = () => {
+    setGetNew(!getNew);
+  }
 
   return (
     <div className="App">
         <Navbar /> 
         {country ?
-          <Game  country = {country} />
+          <Game  country = {country} newCountry ={newCountry} />
          : 
           <h1>Loading</h1>
         }
