@@ -21,7 +21,9 @@ const Clue = ({reset, setReset, type, ans, clueUse, isDisabled}) => {
 
   return (
     <div>
-        <Button variant="light" key={type} onClick={usedClue} style={{margin: '0.25rem', width: "50%"}} disabled={show || !isDisabled}>{type}{show && ((type === "flag" || type === "coatofarms") ? <img src={ans} alt="flag" width="50%"></img>: `: ${ans}`)}</Button>
+        <Button variant="light" key={type} onClick={usedClue} style={{margin: '0.25rem', width: "50%"}} disabled={show || !isDisabled}>
+          {type}{show ? ": " : ""} {show && ((type === "flag" || type === "coatofarms") ? <img src={ans} alt="flag" width="50%"></img>: `${ans}`)}
+        </Button>
     </div>
   )
 }

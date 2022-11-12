@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import Navbar from './components/Navbar.js'
+import Navigation from './components/Navigation.js'
 import Game from './components/Game.js'
 import './App.css';
 
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-        <Navbar /> 
+        <Navigation /> 
         {country ?
           <Game  country = {country} newCountry ={newCountry} />
         : 
