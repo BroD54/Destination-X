@@ -57,8 +57,9 @@ const Game = ({country, newCountry}) => {
   const clueUse = (type) => {
     setClues([...clues, type])
 
-    let clueCount = Object.entries(country.clues).filter(clue => clue != null).length;
+    let clueCount = Object.entries(country.clues).filter(clue => clue[1] != null).length;
     setFinal(clueCount === clues.length + 1);
+    console.log(`${clueCount} / ${clues.length + 1}: ${final}`)
   }
 
   const finalGuess = (e) => {
@@ -69,7 +70,7 @@ const Game = ({country, newCountry}) => {
     } else{
         setWrong([...wrong, guess.guess]);
     }
-    let clueCount = Object.entries(country.clues).filter(clue => clue != null).length;
+    let clueCount = Object.entries(country.clues).filter(clue => clue[1] != null).length;
     setGameover(clueCount === clues.length);
   }
 
@@ -88,7 +89,7 @@ const Game = ({country, newCountry}) => {
       {gameover ? 
       <div>
         <h1>Game Over! Final Score: {score}, Misses: {wrong.length}</h1>
-        <Button onClick={newGame} >Start A New Game</Button>
+        <Button variant="dark" onClick={newGame} >Start A New Game</Button>
       </div> :
       <div>
         <h1>Score: {score}</h1>
@@ -96,12 +97,11 @@ const Game = ({country, newCountry}) => {
         {correct && <Button onClick={refresh}>Continue</Button>}
         <Form>
             <Form.Label>
-                Guesses: {wrong.length > 0 ? (wrong.length > 1 ? wrong.join(", ") : wrong) : "none"}
                 <Form.Control type="text" name="guess" placeholder="Destination..." onChange={e => setGuess({ ...guess, guess: e.target.value })} />
             </Form.Label>
-            {final ? <Button type="submit" onClick={finalGuess} disabled={correct} >Submit</Button>: <Button type="submit" onClick={handleBtnClick} disabled={correct} >Submit</Button>}
+            {final ? <Button variant="dark" type="submit" onClick={finalGuess} disabled={correct} >Submit</Button>: <Button variant="dark" type="submit" onClick={handleBtnClick} disabled={correct} >Submit</Button>}
         </Form>
-        
+        Guesses: {wrong.length > 0 ? (wrong.length > 1 ? wrong.join(", ") : wrong) : "none"}
 
         <Container>
           <Row>
