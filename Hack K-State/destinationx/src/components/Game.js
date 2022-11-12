@@ -24,6 +24,12 @@ const Game = ({country, newCountry}) => {
         "coatofarms": country.coatOfArms.png
     }
   }
+  
+  useEffect(()=> {
+    console.log(country.name);
+  }, [newCountry])
+
+
   if (country.clues.borders === null){
     country.clues.borders = "No borders";
   }
@@ -35,6 +41,7 @@ const Game = ({country, newCountry}) => {
   const [gameover, setGameover] = useState(false);
   let [clues, setClues] = useState([]);
   const [final, setFinal] = useState(false);
+  const [reset, setReset] = useState(false);
   const handleBtnClick = e => {
     e.preventDefault();
     if (guess.guess === country.name){
@@ -69,6 +76,7 @@ const Game = ({country, newCountry}) => {
   const refresh = () => {
     newCountry();
     setCorrect(false);
+    setReset(true);
   }
 
   const newGame = () => {
@@ -97,20 +105,27 @@ const Game = ({country, newCountry}) => {
 
         <Container>
           <Row>
+          <Col>
+            {Object.entries(country.clues).slice(0, Object.entries(country.clues).length / 3).map(clue=> (
+              clue[1] != null &&
+              <Clue key={clue[0]} reset={reset} setReset={setReset} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
+            ))}
+            </Col>
             <Col>
-            
+            {Object.entries(country.clues).slice(Object.entries(country.clues).length / 3, Object.entries(country.clues).length / 3 * 2).map(clue=> (
+              clue[1] != null &&
+              <Clue key={clue[0]} reset={reset} setReset={setReset} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
+            ))}
+            </Col>
+            <Col>
+            {Object.entries(country.clues).slice(Object.entries(country.clues).length / 3 * 2, Object.entries(country.clues).length).map(clue=> (
+              clue[1] != null &&
+              <Clue key={clue[0]} reset={reset} setReset={setReset} type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
+            ))}
             </Col>
           </Row>
         </Container>
 
-        <ul>
-            {Object.entries(country.clues).map(clue => (
-                clue[1] != null &&
-                <li key={clue}>
-                  <Clue type = {clue[0]} ans = {clue[1]} clueUse = {clueUse} isDisabled={clues.indexOf(clue[0]) < 0} />
-                </li>
-            ))}
-        </ul>
       </div>
       } 
     </div>
