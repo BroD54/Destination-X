@@ -5,7 +5,7 @@ const Navigation = () => {
     <div>
       <Navbar bg="dark" variant="dark" className="navigation">
         <Container>
-          <Navbar.Brand href="/" className="navTitle">Destination X</Navbar.Brand>
+          <Navbar.Brand href="/" className="navTitle">Destination <span style={{color: "red", fontSize: '1.5rem'}}>X</span></Navbar.Brand>
           <Nav className="me-auto ">
             <Nav.Link href="/play">Play</Nav.Link>
             <Nav.Link href="/learn">Learn</Nav.Link>

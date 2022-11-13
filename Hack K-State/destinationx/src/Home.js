@@ -5,8 +5,8 @@ import './App.css';
 const Home = () => {
   return (
     <div className="Home">
-        <h1>Destination X</h1>
-        <p className="description">Destination X is an educational game where the player attempts to find the given destination based on their knowledge of the place and clues provided.
+        <h1>Destination <span style={{color: "red", fontSize: '3rem', fontWeight: "bold"}}>X</span></h1>
+        <p className="description">Destination <span style={{color: "red", fontSize: '1.5rem', fontWeight: "bold"}}>X</span> is an educational game where the player attempts to find the given destination based on their knowledge of the place and clues provided.
             The goal of the game is to identify as many destinations as possible before running out of clues or incorrectly identifying five
             destinations.
         </p>
@@ -25,7 +25,7 @@ const Home = () => {
                     </Card>
                 </Col>
                 <Col>
-                    <Card className = "Learn" >
+                    <Card >
                         <Card.Body>
                             <Card.Title>Learn</Card.Title>
                             <Card.Text>
@@ -36,7 +36,7 @@ const Home = () => {
                     </Card>
                 </Col>
                 <Col>
-                    <Card className = "Space" >
+                    <Card >
                         <Card.Body>
                             <Card.Title>Space</Card.Title>
                             <Card.Text>
