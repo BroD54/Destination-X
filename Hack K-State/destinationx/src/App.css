@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Marhey:wght@300;700&display=swap');
 
-.App {
+*{
   text-align: center;
-  color: white;
   font-family: 'Marhey', cursive;
   font-size: 1rem;
+}
+.Home {
+  color: white;
+  padding: 5rem;
+  background-color: #212529;
+  height: 100%;
+}
+.description{
+   font-size: 1.5rem;
+   width: 60%;
+   margin: 2rem auto;
+}
+
+.App {
+  color: white;
+  padding: 5rem;
   height: 100%;
   background-image: url("./components/world-map.jpg");
   background-repeat: no-repeat;
@@ -27,9 +42,4 @@
 
 .navTitle {
   font-weight: 700;
-}
-
-.navigation {
-  opacity: 0.95;
-  margin-bottom: 5rem;
 }

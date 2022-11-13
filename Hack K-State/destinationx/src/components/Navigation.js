@@ -5,11 +5,11 @@ const Navigation = () => {
     <div>
       <Navbar bg="dark" variant="dark" className="navigation">
         <Container>
-          <Navbar.Brand href="#home" className="navTitle">Destination X</Navbar.Brand>
+          <Navbar.Brand href="/" className="navTitle">Destination X</Navbar.Brand>
           <Nav className="me-auto ">
-            <Nav.Link href="#play">Play</Nav.Link>
-            <Nav.Link href="#learn">Learn</Nav.Link>
-            <Nav.Link href="#space">Space</Nav.Link>
+            <Nav.Link href="/play">Play</Nav.Link>
+            <Nav.Link href="/learn">Learn</Nav.Link>
+            <Nav.Link href="/space">Space</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
