@@ -25,7 +25,7 @@ const Home = () => {
                     </Card>
                 </Col>
                 <Col>
-                    <Card >
+                    <Card className="learn-card">
                         <Card.Body>
                             <Card.Title>Learn</Card.Title>
                             <Card.Text>
@@ -36,8 +36,8 @@ const Home = () => {
                     </Card>
                 </Col>
                 <Col>
-                    <Card >
-                        <Card.Body>
+                    <Card className = "Space-card">
+                        <Card.Body >
                             <Card.Title>Space</Card.Title>
                             <Card.Text>
                             Explore our Solar System in this unique game mode, which includes all objects in our Solar System!

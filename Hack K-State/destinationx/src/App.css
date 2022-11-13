@@ -23,6 +23,32 @@
   box-shadow: inset 0 0 0 2000px hsla(0, 0%, 0%, 0.6);
 }
 
+.Space-card {
+  color: white;
+  background-image: url("./components/newSpace-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px hsla(0, 0%, 0%, 0.6);
+}
+.learn-card {
+  color: white;
+  background-image: url("./components/europe-map.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  box-shadow: inset 0 0 0 2000px hsla(0, 0%, 0%, 0.6);
+}
+
+.Space {
+  color: white;
+  padding: 5rem;
+  background-image: url("./components/newSpace-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  box-shadow: inset 0 0 0 2000px hsla(0, 0%, 0%, 0.6);
+}
+
 .country {
   margin-bottom: 1rem;
 }

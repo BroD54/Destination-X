@@ -24,10 +24,6 @@ const Game = ({country, newCountry}) => {
         "coatofarms": country.coatOfArms.png
     }
   }
-  
-  useEffect(()=> {
-    console.log(country.name);
-  }, [newCountry])
 
 
   if (country.clues.borders === null){

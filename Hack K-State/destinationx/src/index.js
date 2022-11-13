@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import Home from './Home';
 import Learn from './Learn';
+import Space from './Space';
 import Navigation from './components/Navigation.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,6 +16,9 @@ root.render(
         <Route exact path="/play" element={<App />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/learn" element={<Learn />} />
+        <Route exact path="/learn" element={<Learn />} />
+        <Route exact path="/Space" element={<Space />} />
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
