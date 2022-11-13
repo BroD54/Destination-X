@@ -3,6 +3,7 @@ import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import Home from './Home';
+import Learn from './Learn';
 import Navigation from './components/Navigation.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route exact path="/play" element={<App />} />
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/learn" element={<Learn />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

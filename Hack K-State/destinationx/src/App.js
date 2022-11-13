@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react'
 import Game from './components/Game.js'
 import './App.css';
-
 function App() {
   const [country, setCountry] = useState();
   const[getNew, setGetNew] = useState(false);
