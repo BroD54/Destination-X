@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Destination-X/static/css/main.4e163670.css",
-    "main.js": "/Destination-X/static/js/main.600da8be.js",
-    "static/media/world-map.jpg": "/Destination-X/static/media/world-map.9ed55fc0266f75179d03.jpg",
-    "static/media/newSpace-img.jpg": "/Destination-X/static/media/newSpace-img.d504f43834f0174d3e26.jpg",
-    "static/media/europe-map.jpg": "/Destination-X/static/media/europe-map.df7c85a7fc8389420c54.jpg",
-    "index.html": "/Destination-X/index.html",
-    "main.4e163670.css.map": "/Destination-X/static/css/main.4e163670.css.map",
-    "main.600da8be.js.map": "/Destination-X/static/js/main.600da8be.js.map"
+    "main.css": "/brod54/Destination-X/static/css/main.93832b15.css",
+    "main.js": "/brod54/Destination-X/static/js/main.600da8be.js",
+    "static/media/world-map.jpg": "/brod54/Destination-X/static/media/world-map.9ed55fc0266f75179d03.jpg",
+    "static/media/newSpace-img.jpg": "/brod54/Destination-X/static/media/newSpace-img.d504f43834f0174d3e26.jpg",
+    "static/media/europe-map.jpg": "/brod54/Destination-X/static/media/europe-map.df7c85a7fc8389420c54.jpg",
+    "index.html": "/brod54/Destination-X/index.html",
+    "main.93832b15.css.map": "/brod54/Destination-X/static/css/main.93832b15.css.map",
+    "main.600da8be.js.map": "/brod54/Destination-X/static/js/main.600da8be.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e163670.css",
+    "static/css/main.93832b15.css",
     "static/js/main.600da8be.js"
   ]
 }
