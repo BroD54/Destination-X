@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.a699c177.css",
-    "main.js": "/static/js/main.f64236cf.js",
+    "main.js": "/static/js/main.600da8be.js",
     "static/media/world-map.jpg": "/static/media/world-map.9ed55fc0266f75179d03.jpg",
     "static/media/newSpace-img.jpg": "/static/media/newSpace-img.d504f43834f0174d3e26.jpg",
     "static/media/europe-map.jpg": "/static/media/europe-map.df7c85a7fc8389420c54.jpg",
     "index.html": "/index.html",
     "main.a699c177.css.map": "/static/css/main.a699c177.css.map",
-    "main.f64236cf.js.map": "/static/js/main.f64236cf.js.map"
+    "main.600da8be.js.map": "/static/js/main.600da8be.js.map"
   },
   "entrypoints": [
     "static/css/main.a699c177.css",
-    "static/js/main.f64236cf.js"
+    "static/js/main.600da8be.js"
   ]
 }
