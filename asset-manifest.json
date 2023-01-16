@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Destination-X/static/css/main.4e163670.css",
-    "main.js": "/Destination-X/static/js/main.5c5e91a4.js",
+    "main.js": "/Destination-X/static/js/main.98e6fc12.js",
     "static/media/world-map.jpg": "/Destination-X/static/media/world-map.9ed55fc0266f75179d03.jpg",
     "static/media/newSpace-img.jpg": "/Destination-X/static/media/newSpace-img.d504f43834f0174d3e26.jpg",
     "static/media/europe-map.jpg": "/Destination-X/static/media/europe-map.df7c85a7fc8389420c54.jpg",
     "index.html": "/Destination-X/index.html",
     "main.4e163670.css.map": "/Destination-X/static/css/main.4e163670.css.map",
-    "main.5c5e91a4.js.map": "/Destination-X/static/js/main.5c5e91a4.js.map"
+    "main.98e6fc12.js.map": "/Destination-X/static/js/main.98e6fc12.js.map"
   },
   "entrypoints": [
     "static/css/main.4e163670.css",
-    "static/js/main.5c5e91a4.js"
+    "static/js/main.98e6fc12.js"
   ]
 }
